@@ -1,14 +1,20 @@
 <html>
   <head>
     <title>home</title>
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png"/>
+    <link id='favicon' rel='shortcut icon' type='image/x-icon' href='images/favicon.png'/>
     <link rel='stylesheet' type='text/css' href='./styles/main.css'>
   </head>
-  <body id='body' class='body' background='./images/example_image.jpg'>
-    <input id='FileUploader' type='file' onclick='this.value = null' onchange='ImageHandler.upload(this.files[0])'></input>
+  <body id='body' class='body' background=''>
+    <div id='content-container' class='content-container'>
+      <!-- CUSTOMIZED CONTENT HERE -->
+    </div>
+    <div id='settings-container' class='settings-container'>
+      <p>Upload Background Image</p><input type='file' onchange='ImageHandler.upload(this.files[0])' onclick='this.value = null' style='display:block'></input>
+      <p>Options</p><input type='button' onclick='ImageHandler.clearAllImages()' style='display:block' value='Clear All Background Images'></input>
+    </div>
 
     <div class='settings-button'>
-      <image class='settings-button-image' src='./images/settings-gear.png'>
+      <image class='settings-button-image' onclick='SettingsHandler.toggleSettingsVisibility()' src='./images/settings-gear.png'>
     </div>
 
     <!-- CLASSES -->
