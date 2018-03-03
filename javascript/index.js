@@ -14,6 +14,15 @@ class ImageHandler {
 			document.getElementById('body').background = dataUrl
 		})
 		.catch(error => {
+			return HTML5FileAPIManager.convertFileToDataUrl(file)
+			console.error(error)
+		})
+		.then(dataUrl => {
+			LOCALSTORAGEOBJECT.addKeyValue('fallbackImage', dataUrl)
+			document.getElementById('body').background = dataUrl
+			location.reload()
+		})
+		.catch(error => {
 			throw new Error(error)
 		})
 	}
@@ -110,8 +119,15 @@ new Debugger()
 /*** Setup Document With LocalStorage Configurations ***/
 OnLoad.loadLocalStorageConfiguration()
 
-LOCALSTORAGEOBJECT.get().randomBackgrounds ?
-	OnLoad.loadRandomImage() : OnLoad.loadLastSetImage()
+if (LOCALSTORAGEOBJECT.get().fallbackImage) {
+	document.getElementById('body')
+		.background = LOCALSTORAGEOBJECT.get().fallbackImage
+	document.getElementById('fileLoader').disabled = true
+	document.getElementById('backgroundImageUploaderTitle').innerHTML += ' (Multiple Images Not Supported For Your Browser, Reset All Settings To Try Again)'
+} else {
+	LOCALSTORAGEOBJECT.get().randomBackgrounds ?
+		OnLoad.loadRandomImage() : OnLoad.loadLastSetImage()
+}
 
 document.getElementById('settings-button')
 	.style.opacity = LOCALSTORAGEOBJECT.get().hideSettingsButton ?

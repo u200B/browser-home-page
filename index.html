@@ -20,8 +20,8 @@
     <div id='settings-container' class='settings-container'>
       <ul>
         <dl>
-          <dt>Upload Background Image</dt>
-            <dd><input type='file' onchange='ImageHandler.upload(this.files[0])' onclick='this.value = null' style='display:inline'></input></dd>
+          <dt id='backgroundImageUploaderTitle'>Upload Background Image</dt>
+            <dd><input id='fileLoader' type='file' onchange='ImageHandler.upload(this.files[0])' onclick='this.value = null' style='display:inline'></input></dd>
           <dt>Options</dt>
             <dd><input id='hideSettingsButton' type="checkbox" onclick='SettingsHandler.updateSettings("hideSettingsButton", this.checked); location.reload()'>Hide Settings Button (Always Available At Bottom Right-Hand Side Of Browser)<br></dd>
             <dd><input id='showSearchBar' type="checkbox" onclick='SettingsHandler.updateSettings("showSearchBar", this.checked); location.reload()'>Search Bar<br></dd>
