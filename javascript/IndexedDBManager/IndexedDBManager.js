@@ -1,0 +1,47 @@
+class IndexedDBManager {
+  static _loadDatabase() {
+    this.dbName = 'ImageDatabase'
+    this.dbp = new IndexedDBP(this.dbName)
+    this.dbp.upgrade((event) => {
+      let db = event.target.result
+      let objectStore = db.createObjectStore('images', {keyPath: undefined, autoIncrement: true})
+      objectStore.createIndex('image', 'image')
+    })
+  }
+
+  static storeImage(file) {
+    return new Promise((resolve, reject) => {
+      this._loadDatabase()
+      this.dbp.open()
+      .then(event => {
+        return this.dbp.transaction(this.dbp.db.transaction('images', 'readwrite')
+          .objectStore('images').put(file))
+      })
+      .then(event => {
+        this.dbp.close()
+        resolve(event)
+      })
+      .catch(error => {
+        console.error(error)
+        reject(error)
+      })
+    })
+  }
+
+  static getImageByKey(key) {
+    return new Promise((resolve, reject) => {
+      this.dbp.open()
+      .then(event => {
+        return this.dbp.transaction(this.dbp.db.transaction('images', 'readonly').objectStore('images').get(key))
+      })
+      .then(event => {
+        this.dbp.close()
+        resolve(event)
+      })
+      .catch(error => {
+        console.error(error)
+        reject(error)
+      })
+    })
+  }
+}

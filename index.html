@@ -5,10 +5,18 @@
     <link rel='stylesheet' type='text/css' href='./styles/main.css'>
   </head>
   <body id='body' class='body' background='./images/example_image.jpg'>
-    <input id='file' type='file'></input>
-    <script type='text/javascript' src='./javascript/globals/constants.js'></script>
+    <input id='FileUploader' type='file' onclick='this.value = null' onchange='ImageHandler.upload(this.files[0])'></input>
+
+    <div class='settings-button'>
+      <image class='settings-button-image' src='./images/settings-gear.png'>
+    </div>
+
+    <!-- CLASSES -->
     <script type='text/javascript' src='./javascript/LocalStorageManager/LocalStorageManager.js'></script>
-    <script type='text/javascript' src='./javascript/IndexedDBManager/IndexedDBManager.js'></script>
     <script type='text/javascript' src='./javascript/HTML5FileAPIManager/HTML5FileAPIManager.js'></script>
+    <script type='text/javascript' src='./javascript/IndexedDBP/IndexedDBP.js'></script>
+    <script type='text/javascript' src='./javascript/IndexedDBManager/IndexedDBManager.js'></script>
+    <!-- MAIN EXECUTION THREAD -->
+    <script type='text/javascript' src='./javascript/index.js'></script>
   </body>
 </html>

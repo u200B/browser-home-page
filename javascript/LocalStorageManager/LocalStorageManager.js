@@ -18,7 +18,7 @@ class LocalStorageManager {
     this.checkTypeForMethod(this.typeOptions.array)
 
     if (!localStorage.getItem(this.keyName)) {
-      create(this.keyName)
+      this.create(this.keyName)
     }
 
     var arr = JSON.parse(localStorage.getItem(this.keyName))
