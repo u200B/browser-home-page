@@ -1,0 +1,25 @@
+#search-container {
+  padding: 20px;
+  height: 30px;
+  z-index: 9;
+  position: absolute;
+  background-color: lightgrey;
+
+}
+#search-container-drag-section {
+  height: 100%;
+  width: 30px;
+  float: left;
+  background-color: grey;
+  z-index: 10;
+  cursor: move;
+}
+
+#search-input {
+  height: 100%;
+}
+
+#search-input-button {
+  height: 100%;
+  margin: 0px;
+}

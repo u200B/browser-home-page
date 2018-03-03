@@ -3,14 +3,19 @@
     <title>home</title>
     <link id='favicon' rel='shortcut icon' type='image/x-icon' href='images/favicon.png'/>
     <link rel='stylesheet' type='text/css' href='./styles/main.css'>
+    <link rel='stylesheet' type='text/css' href='./styles/search.css'>
   </head>
   <body id='body' class='body' background=''>
     <div id='content-container' class='content-container'>
       <!-- CUSTOMIZED CONTENT HERE -->
-      <input id='search-input' autocomplete='off' onkeyup='search(event)' placeholder='search' type='text'></input>
-      <button onmouseup='search(event)' onkeyup='search(event)'>
-        search
-      </button>
+      <!-- SEARCH -->
+      <div id='search-container'>
+        <div id='search-container-drag-section'></div>
+        <input id='search-input' autocomplete='off' onkeyup='search(event)' placeholder='search' type='text'></input>
+        <button id='search-input-button' onmouseup='search(event)' onkeyup='search(event)'>
+          search
+        </button>
+      </div>
     </div>
     <div id='settings-container' class='settings-container'>
       <ul>
@@ -18,8 +23,10 @@
           <dt>Upload Background Image</dt>
             <dd><input type='file' onchange='ImageHandler.upload(this.files[0])' onclick='this.value = null' style='display:inline'></input></dd>
           <dt>Options</dt>
-            <dd><input id='randomBackgrounds' type="checkbox" onclick='SettingsHandler.updateSettings("randomBackgrounds", this.checked)'>Randomly Select Uploaded Images As Background<br></dd>
             <dd><input id='hideSettingsButton' type="checkbox" onclick='SettingsHandler.updateSettings("hideSettingsButton", this.checked); location.reload()'>Hide Settings Button (Always Available At Bottom Right-Hand Side Of Browser)<br></dd>
+            <dd><input id='showSearchBar' type="checkbox" onclick='SettingsHandler.updateSettings("showSearchBar", this.checked); location.reload()'>Search Bar<br></dd>
+
+            <dd><input id='randomBackgrounds' type="checkbox" onclick='SettingsHandler.updateSettings("randomBackgrounds", this.checked)'>Randomly Select Uploaded Images As Background<br></dd>
             <dd><input type='button' onclick='ImageHandler.clearAllImages();' style='display:inline' value='Clear All Background Images'></input></dd>
             <dd><input type='button' onclick=' LOCALSTORAGEOBJECT.destroy(); ImageHandler.clearAllImages()' style='display:inline' value='Reset All Settings'></input></dd>
         </dl>

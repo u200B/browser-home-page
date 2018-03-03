@@ -55,6 +55,8 @@ class OnLoad {
 			.checked = LOCALSTORAGEOBJECT.get().randomBackgrounds
 		document.getElementById('hideSettingsButton')
 			.checked = LOCALSTORAGEOBJECT.get().hideSettingsButton
+		document.getElementById('showSearchBar')
+			.checked = LOCALSTORAGEOBJECT.get().showSearchBar
 	}
 
 	static loadLastSetImage() {
@@ -100,6 +102,7 @@ class OnLoad {
 	}
 }
 
+/*** Setup Document With LocalStorage Configurations ***/
 OnLoad.loadLocalStorageConfiguration()
 
 LOCALSTORAGEOBJECT.get().randomBackgrounds ?
@@ -108,3 +111,13 @@ LOCALSTORAGEOBJECT.get().randomBackgrounds ?
 document.getElementById('settings-button')
 	.style.opacity = LOCALSTORAGEOBJECT.get().hideSettingsButton ?
 	'.0' : '.5'
+
+if (LOCALSTORAGEOBJECT.get()['search-container-position']) {
+	document.getElementById('search-container')
+		.style.top = LOCALSTORAGEOBJECT.get()['search-container-position'].top
+	document.getElementById('search-container')
+		.style.left = LOCALSTORAGEOBJECT.get()['search-container-position'].left
+}
+document.getElementById('search-container')
+	.style.display = LOCALSTORAGEOBJECT.get().showSearchBar ?
+	'' : 'none'
