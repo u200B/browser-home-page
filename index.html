@@ -27,9 +27,11 @@
             <dd><input id='showSearchBar' type="checkbox" onclick='SettingsHandler.updateSettings("showSearchBar", this.checked); location.reload()'>Search Bar<br></dd>
 
             <dd><input id='randomBackgrounds' type="checkbox" onclick='SettingsHandler.updateSettings("randomBackgrounds", this.checked)'>Randomly Select Uploaded Images As Background<br></dd>
+            <dd><input id='enableDebugger' type="checkbox" onclick='SettingsHandler.updateSettings("enableDebugger", this.checked); location.reload()'>Enable Debugger<br></dd>
             <dd><input type='button' onclick='ImageHandler.clearAllImages();' style='display:inline' value='Clear All Background Images'></input></dd>
             <dd><input type='button' onclick=' LOCALSTORAGEOBJECT.destroy(); ImageHandler.clearAllImages()' style='display:inline' value='Reset All Settings'></input></dd>
         </dl>
+        <div id='debugger' style='border: 1px solid black; width: 80%; padding: 10px'></div>
       </ul>
     </div>
 
@@ -39,6 +41,7 @@
 
     <!-- GLOBALS -->
     <script type='text/javascript' src='./javascript/globals/globals.js'></script>
+    <script type='text/javascript' src='./javascript/Debugger/Debugger.js'></script>
     <!-- CLASSES -->
     <script type='text/javascript' src='./javascript/LocalStorageManager/LocalStorageManager.js'></script>
     <script type='text/javascript' src='./javascript/HTML5FileAPIManager/HTML5FileAPIManager.js'></script>

@@ -57,6 +57,8 @@ class OnLoad {
 			.checked = LOCALSTORAGEOBJECT.get().hideSettingsButton
 		document.getElementById('showSearchBar')
 			.checked = LOCALSTORAGEOBJECT.get().showSearchBar
+		document.getElementById('enableDebugger')
+			.checked = LOCALSTORAGEOBJECT.get().enableDebugger
 	}
 
 	static loadLastSetImage() {
@@ -102,6 +104,9 @@ class OnLoad {
 	}
 }
 
+/* Load Debugger */
+new Debugger()
+
 /*** Setup Document With LocalStorage Configurations ***/
 OnLoad.loadLocalStorageConfiguration()
 
@@ -118,6 +123,11 @@ if (LOCALSTORAGEOBJECT.get()['search-container-position']) {
 	document.getElementById('search-container')
 		.style.left = LOCALSTORAGEOBJECT.get()['search-container-position'].left
 }
+
 document.getElementById('search-container')
 	.style.display = LOCALSTORAGEOBJECT.get().showSearchBar ?
 	'' : 'none'
+
+	document.getElementById('debugger')
+		.style.display = LOCALSTORAGEOBJECT.get().enableDebugger ?
+		'' : 'none'
