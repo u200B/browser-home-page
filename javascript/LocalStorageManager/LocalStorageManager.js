@@ -12,13 +12,20 @@ class LocalStorageManager {
 
   /* OBJECT */
 
+  addKeyValue(key, value) {
+    this.checkTypeForMethod(this.typeOptions.object)
+    let obj = JSON.parse(localStorage.getItem(this.keyName))
+    obj[key] = value
+    localStorage.setItem(this.keyName, JSON.stringify(obj))
+  }
+
   /* ARRAY */
 
   append(item) {
     this.checkTypeForMethod(this.typeOptions.array)
 
     if (!localStorage.getItem(this.keyName)) {
-      this.create(this.keyName)
+      this.create()
     }
 
     var arr = JSON.parse(localStorage.getItem(this.keyName))
@@ -29,14 +36,23 @@ class LocalStorageManager {
   }
 
   /* SHARED */
-  create(keyName) {
-    if (this.storageType === this.typeOptions.string) {
-      localStorage.setItem(keyName, '')
-    } else if (this.storageType === this.typeOptions.object) {
-      localStorage.setItem(keyName, '{}')
-    } else if (this.storageType === this.typeOptions.array) {
-      localStorage.setItem(keyName, '[]')
+  create() {
+    if(!localStorage.getItem(this.keyName)) {
+      if (this.storageType === this.typeOptions.string) {
+        localStorage.setItem(this.keyName, '')
+      } else if (this.storageType === this.typeOptions.object) {
+        localStorage.setItem(this.keyName, '{}')
+      } else if (this.storageType === this.typeOptions.array) {
+        localStorage.setItem(this.keyName, '[]')
+      }
     }
+  }
+
+  get() {
+    return this.storageType === this.typeOptions.object ||
+           this.storageType === this.typeOptions.array ?
+           JSON.parse(localStorage.getItem(this.keyName)) :
+           localStorage.getItem(this.keyName)
   }
 
   destroy() {

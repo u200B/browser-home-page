@@ -7,16 +7,31 @@
   <body id='body' class='body' background=''>
     <div id='content-container' class='content-container'>
       <!-- CUSTOMIZED CONTENT HERE -->
+      <input id='search-input' autocomplete='off' onkeyup='search(event)' placeholder='search' type='text'></input>
+      <button onmouseup='search(event)' onkeyup='search(event)'>
+        search
+      </button>
     </div>
     <div id='settings-container' class='settings-container'>
-      <p>Upload Background Image</p><input type='file' onchange='ImageHandler.upload(this.files[0])' onclick='this.value = null' style='display:block'></input>
-      <p>Options</p><input type='button' onclick='ImageHandler.clearAllImages()' style='display:block' value='Clear All Background Images'></input>
+      <ul>
+        <dl>
+          <dt>Upload Background Image</dt>
+            <dd><input type='file' onchange='ImageHandler.upload(this.files[0])' onclick='this.value = null' style='display:inline'></input></dd>
+          <dt>Options</dt>
+            <dd><input id='randomBackgrounds' type="checkbox" onclick='SettingsHandler.updateSettings("randomBackgrounds", this.checked)'>Randomly Select Uploaded Images As Background<br></dd>
+            <dd><input id='hideSettingsButton' type="checkbox" onclick='SettingsHandler.updateSettings("hideSettingsButton", this.checked); location.reload()'>Hide Settings Button (Always Available At Bottom Right-Hand Side Of Browser)<br></dd>
+            <dd><input type='button' onclick='ImageHandler.clearAllImages();' style='display:inline' value='Clear All Background Images'></input></dd>
+            <dd><input type='button' onclick=' LOCALSTORAGEOBJECT.destroy(); ImageHandler.clearAllImages()' style='display:inline' value='Reset All Settings'></input></dd>
+        </dl>
+      </ul>
     </div>
 
-    <div class='settings-button'>
+    <div id='settings-button' class='settings-button'>
       <image class='settings-button-image' onclick='SettingsHandler.toggleSettingsVisibility()' src='./images/settings-gear.png'>
     </div>
 
+    <!-- GLOBALS -->
+    <script type='text/javascript' src='./javascript/globals/globals.js'></script>
     <!-- CLASSES -->
     <script type='text/javascript' src='./javascript/LocalStorageManager/LocalStorageManager.js'></script>
     <script type='text/javascript' src='./javascript/HTML5FileAPIManager/HTML5FileAPIManager.js'></script>
