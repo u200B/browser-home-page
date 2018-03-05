@@ -9,10 +9,10 @@
     <div id='content-container' class='content-container'>
       <!-- CUSTOMIZED CONTENT HERE -->
       <!-- SEARCH -->
-      <div id='search-container'>
-        <div id='search-container-drag-section'></div>
-        <input id='search-input' autocomplete='off' onkeyup='search(event)' placeholder='search' type='text'></input>
-        <button id='search-input-button' onmouseup='search(event)' onkeyup='search(event)'>
+      <div id='search-container' class='search-container'>
+        <div id='search-container-drag-section' class='search-container-drag-section'></div>
+        <input id='search-input' autocomplete='off' class='search-input' onkeyup='search(event)' placeholder='search' type='text'></input>
+        <button id='search-input-button' class='search-input-button' onmouseup='search(event)' onkeyup='search(event)'>
           search
         </button>
       </div>
@@ -36,8 +36,8 @@
 
             <dd><input id='randomBackgrounds' type='checkbox' onclick='SettingsHandler.updateSettings("randomBackgrounds", this.checked)'>Randomly Select Uploaded Images As Background<br></dd>
             <dd><input id='enableDebugger' type='checkbox' onclick='SettingsHandler.updateSettings("enableDebugger", this.checked); location.reload()'>Enable Debugger<br></dd>
-            <dd><input type='button' onclick='ImageHandler.clearAllImages(); location.reload();' style='display:inline' value='Clear All Background Images'></input></dd>
-            <dd><input type='button' onclick=' LOCALSTORAGEOBJECT.destroy(); ImageHandler.clearAllImages(); location.reload()' style='display:inline' value='Reset All Settings'></input></dd>
+            <dd><input type='button' onclick='ImageHandler.clearAllImages()' style='display:inline' value='Clear All Background Images'></input></dd>
+            <dd><input type='button' onclick=' LOCALSTORAGEOBJECT.destroy(); ImageHandler.clearAllImages()' style='display:inline' value='Reset All Settings'></input></dd>
         </dl>
         <div id='debugger' style='border: 1px solid black; width: 80%; padding: 10px'></div>
       </ul>
@@ -55,6 +55,9 @@
     <script type='text/javascript' src='./javascript/HTML5FileAPIManager/HTML5FileAPIManager.js'></script>
     <script type='text/javascript' src='./javascript/IndexedDBP/IndexedDBP.js'></script>
     <script type='text/javascript' src='./javascript/IndexedDBManager/IndexedDBManager.js'></script>
+    <script type='text/javascript' src='./javascript/ImageHandler/ImageHandler.js'></script>
+    <script type='text/javascript' src='./javascript/SettingsHandler/SettingsHandler.js'></script>
+    <script type='text/javascript' src='./javascript/OnLoad/OnLoad.js'></script>
     <!-- MAIN EXECUTION THREAD -->
     <script type='text/javascript' src='./javascript/index.js'></script>
   </body>

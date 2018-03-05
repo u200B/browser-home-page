@@ -1,29 +1,40 @@
 /*** IndexedDBP - A Promisified Wrapper Around IndexedDB ***/
 
+/*
+  eslint
+    no-unused-vars: [
+                      2,
+                      {'varsIgnorePattern':'IndexedDBP',
+                       'argsIgnorePattern': 'event'
+                      }
+                    ],
+    no-console: ["error", { allow: ["warn"] }]
+*/
+
 class IndexedDBP {
   constructor(dbName, dbVersion) {
     this._loadSupportingMethodsAndVariables()
     dbName ? this.dbName = dbName :
-    this._error(['IndexedDBP requires database name',
-                 'to be provided in constructor'].join(' '))
+      this._error(['IndexedDBP requires database name',
+        'to be provided in constructor'].join(' '))
     this.dbVersion = dbVersion
     this.indexedDB = this._getIndexedDB() ?
       this._getIndexedDB() : this._error(['IndexedDB not supported',
-                                          'in current browser'].join(' '))
+        'in current browser'].join(' '))
   }
 
   upgrade(upgradeMethod) {
     typeof upgradeMethod === 'function' ?
       this._runUpgrade = upgradeMethod :
       this._error(['Parameter to IndexedDBP.upgrade',
-                   'must be of type \'function\''].join(' '))
+        'must be of type \'function\''].join(' '))
   }
 
   versionchange(versionchangeMethod) {
     typeof versionchangeMethod === 'function' ?
       this._runVersionchange = versionchangeMethod :
       this._error(['Parameter to IndexedDBP.versionchange',
-                   'must be of type \'function\''].join(' '))
+        'must be of type \'function\''].join(' '))
   }
 
   open(upgradeCallback, versionchangeCallback) {

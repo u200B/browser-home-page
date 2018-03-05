@@ -1,0 +1,27 @@
+{
+    'env': {
+      'browser': true,
+    },
+    'extends': 'eslint:recommended',
+    'globals': {
+      'Promise': 'true',
+
+      'LOCALSTORAGEOBJECT': 'true',
+
+      'Debugger': 'true',
+      'HTML5FileAPIManager': 'true',
+      'IndexedDBManager': 'true',
+      'LocalStorageManager': 'true',
+      'IndexedDBP': 'true',
+      'ImageHandler': 'true',
+      'SettingsHandler': 'true',
+      'OnLoad': 'true'
+    },
+    'parserOptions': {
+      'ecmaVersion': 9,
+      'sourceType': 'script',
+    },
+    'rules': {
+      'indent': ['error', 2]
+    }
+}

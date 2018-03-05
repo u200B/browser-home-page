@@ -1,3 +1,5 @@
+/* eslint no-unused-vars: [2, {'varsIgnorePattern':'LocalStorageManager'}] */
+
 class LocalStorageManager {
   constructor(keyName, storageType) {
     this.typeOptions = {string:'STRING', object:'OBJECT', array:'ARRAY'}
@@ -51,8 +53,8 @@ class LocalStorageManager {
   get() {
     return this.storageType === this.typeOptions.object ||
            this.storageType === this.typeOptions.array ?
-           JSON.parse(localStorage.getItem(this.keyName)) :
-           localStorage.getItem(this.keyName)
+      JSON.parse(localStorage.getItem(this.keyName)) :
+      localStorage.getItem(this.keyName)
   }
 
   destroy() {
