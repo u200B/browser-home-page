@@ -61,12 +61,14 @@ class Settings {
     }
     ImageHandler.clearImageByKey(key)
   }
-  
+
   static clearAllImages() {
     ImageHandler.clearAllImages()
   }
 
-  static toggleSettingsVisibility() {
+  static toggleSettingsVisibility(clickedOutsideContainer) {
+    this.settingsVisible = clickedOutsideContainer ?
+      true : this.settingsVisible
     if (this.settingsVisible) {
       document.getElementById('settings-container').style.display = 'none'
       document.getElementById('content-container').style.display = 'block'

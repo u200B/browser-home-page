@@ -4,6 +4,9 @@ new Debugger()
 /*** Setup Document With LocalStorage Configurations ***/
 OnLoad.loadLocalStorageConfiguration()
 
+/*** Start SettingsClickMontior ***/
+OnLoad.settingsClickMonitor()
+
 /*** Start UserMonitor ***/
 UserMonitor.start()
 LOCALSTORAGEOBJECT.get().stopSettingsButtonAnimation ?

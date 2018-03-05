@@ -11,7 +11,7 @@ const search = (event) => {
   }
 }
 
-const dragElement = (elmnt, key) => {
+const dragElement = (elmnt, localStorageKey) => {
   const elementMouseDrag = (e) => {
     e = e || window.event
     pos1 = pos3 - e.clientX
@@ -38,7 +38,7 @@ const dragElement = (elmnt, key) => {
     document.onmousemove = null
     document.ontouchmove = null
 
-    LOCALSTORAGEOBJECT.addKeyValue(key, {
+    LOCALSTORAGEOBJECT.addKeyValue(localStorageKey, {
       top: elmnt.style.top,
       left: elmnt.style.left
     })

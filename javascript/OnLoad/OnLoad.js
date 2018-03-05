@@ -17,6 +17,15 @@ class OnLoad {
       .checked = LOCALSTORAGEOBJECT.get().enableDebugger
   }
 
+  static settingsClickMonitor() {
+    document.addEventListener('click', (event) => {
+      var isClickInside = document.getElementById('settings-container').contains(event.target) || document.getElementById('settings-button').contains(event.target)
+      if (!isClickInside) {
+        Settings.toggleSettingsVisibility(true)
+      }
+    })
+  }
+
   static loadLastSetImage(imageKey) {
     IndexedDBManager.getAllImagesWithKeys()
       .then(images => {
