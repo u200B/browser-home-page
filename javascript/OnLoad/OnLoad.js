@@ -80,9 +80,11 @@ class OnLoad {
 
   static loadUserLinks() {
     let userLinksSection = ``
-    LOCALSTORAGEOBJECT.get().userLinks.forEach(userLink => {
-      userLinksSection += `<a href=${userLink.url} target='_blank'>${userLink.commonName}</a></br>`
-    })
+    if (LOCALSTORAGEOBJECT.get().userLinks) {
+      LOCALSTORAGEOBJECT.get().userLinks.forEach(userLink => {
+        userLinksSection += `<a href=${userLink.url} target='_blank'>${userLink.commonName}</a></br>`
+      })
+    }
     document.getElementById('userLinksSection').innerHTML = userLinksSection
   }
 }
