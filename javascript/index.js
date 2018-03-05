@@ -7,8 +7,25 @@ OnLoad.loadLocalStorageConfiguration()
 /*** Start SettingsClickMontior ***/
 OnLoad.settingsClickMonitor()
 
+/*** Load Draggables ***/
+DragElement.dragElement(
+  'search-container',
+  'search-container-drag-section',
+  'search-container-position'
+)
+
+DragElement.dragElement(
+  'link-container',
+  'link-container-drag-section',
+  'link-container-position'
+)
+
 /*** Start UserMonitor ***/
 UserMonitor.start()
+
+/*** Load User Links ***/
+OnLoad.loadUserLinks()
+
 LOCALSTORAGEOBJECT.get().stopSettingsButtonAnimation ?
   UserMonitor.setHandleUserIdle(() => {}) :
   UserMonitor.setHandleUserIdle(SettingsButton.animate)
@@ -40,8 +57,19 @@ if (LOCALSTORAGEOBJECT.get()['search-container-position']) {
     .style.left = LOCALSTORAGEOBJECT.get()['search-container-position'].left
 }
 
+if (LOCALSTORAGEOBJECT.get()['link-container-position']) {
+  document.getElementById('link-container')
+    .style.top = LOCALSTORAGEOBJECT.get()['link-container-position'].top
+  document.getElementById('link-container')
+    .style.left = LOCALSTORAGEOBJECT.get()['link-container-position'].left
+}
+
 document.getElementById('search-container')
   .style.display = LOCALSTORAGEOBJECT.get().showSearchBar ?
+    '' : 'none'
+
+document.getElementById('link-container')
+  .style.display = LOCALSTORAGEOBJECT.get().showLinkContainer ?
     '' : 'none'
 
 document.getElementById('debugger')

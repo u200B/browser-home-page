@@ -80,7 +80,29 @@ class Settings {
   }
 
   static updateSettings(field, value) {
-    LOCALSTORAGEOBJECT.addKeyValue(field, value)
+    if (value === 'addUserLink') {
+      let currentLinks = LOCALSTORAGEOBJECT.get().userLinks
+      if (currentLinks) {
+        currentLinks.push(
+          {
+            url: document.getElementById('addLinkTextFieldUrl').value,
+            commonName: document.getElementById('addLinkTextFieldCommonName')
+              .value
+          }
+        )
+        LOCALSTORAGEOBJECT.addKeyValue(field, currentLinks)
+      } else {
+        LOCALSTORAGEOBJECT.addKeyValue(field, [
+          {
+            url: document.getElementById('addLinkTextFieldUrl').value,
+            commonName: document.getElementById('addLinkTextFieldCommonName')
+              .value
+          }
+        ])
+      }
+    } else {
+      LOCALSTORAGEOBJECT.addKeyValue(field, value)
+    }
     location.reload()
   }
 

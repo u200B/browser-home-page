@@ -8,6 +8,7 @@
     />
     <link rel='stylesheet' type='text/css' href='./styles/main.css'>
     <link rel='stylesheet' type='text/css' href='./styles/search.css'>
+    <link rel='stylesheet' type='text/css' href='./styles/link.css'>
   </head>
   <body id='body' class='body' background=''>
     <div id='content-container' class='content-container'>
@@ -19,6 +20,14 @@
         <button id='search-input-button' class='search-input-button' onmouseup='search(event)' onkeyup='search(event)'>
           search
         </button>
+      </div>
+      <!-- LINKS -->
+      <div id='link-container' class='link-container'>
+        <div id='link-container-drag-section' class='link-container-drag-section'></div></br></br>
+        <input id='addLinkTextFieldUrl' class='addLinkTextFieldUrl' placeholder='url (must start with https://)' type='text'></input></br>
+        <input id='addLinkTextFieldCommonName' class='addLinkTextFieldCommonName' placeholder='link common name' type='text'></input></br>
+        <input id='addLinkButton' class='addLinkButton' type='button' onclick='Settings.updateSettings("userLinks", "addUserLink")' value='add link'></input></br>
+        <div id='userLinksSection' class='userLinksSection'></div>
       </div>
     </div>
     <div id='settings-container' class='settings-container'>
@@ -33,13 +42,18 @@
             <dd></br></dd>
           </dt>
           <dt>Components</dt>
-            <dd><input id='showSearchBar' type="checkbox" onclick='Settings.updateSettings("showSearchBar", this.checked)'>Search Bar</input><br></dd>
-            <dd><input id='stopSettingsButtonAnimation' type="checkbox" onclick='Settings.updateSettings("stopSettingsButtonAnimation", this.checked)'>Stop Settings Button Animation</input><br></dd>
-            <dd><input id='hideSettingsButton' type="checkbox" onclick='Settings.updateSettings("hideSettingsButton", this.checked)'>Hide Settings Button (Always Available At Bottom Left-Hand Side Of Browser)</input><br></dd>
+            <dd></br>Search Bar</br></dd>
+            <dd><input id='showSearchBar' type="checkbox" onclick='Settings.updateSettings("showSearchBar", this.checked)'>Show Search Bar</input></br></dd>
+            <dd></br>Links</br></dd>
+            <dd><input id='showLinkContainer' type="checkbox" onclick='Settings.updateSettings("showLinkContainer", this.checked)'>Show Link Container</input></br></dd>
+            <dd><input id='clearLinkContainer' type="button" onclick='Settings.updateSettings("userLinks", [])' value='Clear Links'></input></br></dd>
+            <dd></br>Settings Button</br></dd>
+            <dd><input id='stopSettingsButtonAnimation' type="checkbox" onclick='Settings.updateSettings("stopSettingsButtonAnimation", this.checked)'>Stop Settings Button Animation</input></br></dd>
+            <dd><input id='hideSettingsButton' type="checkbox" onclick='Settings.updateSettings("hideSettingsButton", this.checked)'>Hide Settings Button (Always Available At Bottom Left-Hand Side Of Browser)</input></br></dd>
             <dd></br></dd>
           <dt>Options</dt>
             <dd><input id='randomBackgrounds' type='checkbox' onclick='Settings.updateSettings("randomBackgrounds", this.checked)'>Randomly Select Uploaded Images As Background</input><br></dd>
-            <dd><input id='enableDebugger' type='checkbox' onclick='Settings.updateSettings("enableDebugger", this.checked)'>Enable Debugger</input><br></dd>
+            <dd><input id='enableDebugger' type='checkbox' onclick='Settings.updateSettings("enableDebugger", this.checked)'>Enable Debugger</input></br></dd>
             <dd></br></dd>
           <dt>Danger Zone</dt>
             <dd><input type='button' onclick='Settings.clearAllImages()' style='display:inline' value='Clear All Background Images'></input></dd>
@@ -67,6 +81,7 @@
     <script type='text/javascript' src='./javascript/ImageHandler/ImageHandler.js'></script>
     <script type='text/javascript' src='./javascript/Settings/Settings.js'></script>
     <script type='text/javascript' src='./javascript/SettingsButton/SettingsButton.js'></script>
+    <script type='text/javascript' src='./javascript/DragElement/DragElement.js'></script>
     <script type='text/javascript' src='./javascript/OnLoad/OnLoad.js'></script>
     <!-- MAIN EXECUTION THREAD -->
     <script type='text/javascript' src='./javascript/index.js'></script>

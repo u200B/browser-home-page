@@ -5,6 +5,7 @@
     'extends': 'eslint:recommended',
     'globals': {
       'Debugger': 'true',
+      'DragElement': 'true',
       'HTML5FileAPIManager': 'true',
       'ImageHandler': 'true',
       'IndexedDBManager': 'true',
