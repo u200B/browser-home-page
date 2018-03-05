@@ -4,6 +4,12 @@ new Debugger()
 /*** Setup Document With LocalStorage Configurations ***/
 OnLoad.loadLocalStorageConfiguration()
 
+/*** Start UserMonitor ***/
+UserMonitor.start()
+LOCALSTORAGEOBJECT.get().stopSettingsButtonAnimation ?
+  UserMonitor.setHandleUserIdle(() => {}) :
+  UserMonitor.setHandleUserIdle(SettingsButton.animate)
+
 if (LOCALSTORAGEOBJECT.get().fallbackImage) {
   document.getElementById('body')
     .background = LOCALSTORAGEOBJECT.get().fallbackImage

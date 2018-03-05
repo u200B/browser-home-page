@@ -1,7 +1,11 @@
 <html>
   <head>
     <title>home</title>
-    <link id='favicon' rel='shortcut icon' type='image/x-icon' href='images/favicon.png'/>
+    <link id='favicon'
+          rel='shortcut icon'
+          type='image/x-icon'
+          href='images/favicon.png'
+    />
     <link rel='stylesheet' type='text/css' href='./styles/main.css'>
     <link rel='stylesheet' type='text/css' href='./styles/search.css'>
   </head>
@@ -22,30 +26,39 @@
         <dl>
           <dt id='backgroundImageUploaderTitle'>Upload Background Image</dt>
             <dd><input id='fileLoader' type='file' onchange='Settings.upload(this.files[0])' onclick='this.value = null' style='display:inline'></input></dd>
+            <dd></br></dd>
           <dt id='currentBackgroundImagesSection'>
             Current Background Images
-            <dd><input id='loadCurrentBackgroundImagesSection' type="button" onclick='Settings.loadCurrentBackgroundImagesSection("hideSettingsButton", this.checked)' value='Load'><br></dd>
+            <dd><input id='loadCurrentBackgroundImagesSection' type="button" onclick='Settings.loadCurrentBackgroundImagesSection("hideSettingsButton", this.checked)' value='Load'></input><br></dd>
+            <dd></br></dd>
           </dt>
+          <dt>Components</dt>
+            <dd><input id='showSearchBar' type="checkbox" onclick='Settings.updateSettings("showSearchBar", this.checked)'>Search Bar</input><br></dd>
+            <dd><input id='stopSettingsButtonAnimation' type="checkbox" onclick='Settings.updateSettings("stopSettingsButtonAnimation", this.checked)'>Stop Settings Button Animation</input><br></dd>
+            <dd><input id='hideSettingsButton' type="checkbox" onclick='Settings.updateSettings("hideSettingsButton", this.checked)'>Hide Settings Button (Always Available At Bottom Left-Hand Side Of Browser)</input><br></dd>
+            <dd></br></dd>
           <dt>Options</dt>
-            <dd><input id='hideSettingsButton' type="checkbox" onclick='Settings.updateSettings("hideSettingsButton", this.checked)'>Hide Settings Button (Always Available At Bottom Right-Hand Side Of Browser)<br></dd>
-            <dd><input id='showSearchBar' type="checkbox" onclick='Settings.updateSettings("showSearchBar", this.checked)'>Search Bar<br></dd>
-
-            <dd><input id='randomBackgrounds' type='checkbox' onclick='Settings.updateSettings("randomBackgrounds", this.checked)'>Randomly Select Uploaded Images As Background<br></dd>
-            <dd><input id='enableDebugger' type='checkbox' onclick='Settings.updateSettings("enableDebugger", this.checked)'>Enable Debugger<br></dd>
+            <dd><input id='randomBackgrounds' type='checkbox' onclick='Settings.updateSettings("randomBackgrounds", this.checked)'>Randomly Select Uploaded Images As Background</input><br></dd>
+            <dd><input id='enableDebugger' type='checkbox' onclick='Settings.updateSettings("enableDebugger", this.checked)'>Enable Debugger</input><br></dd>
+            <dd></br></dd>
+          <dt>Danger Zone</dt>
             <dd><input type='button' onclick='Settings.clearAllImages()' style='display:inline' value='Clear All Background Images'></input></dd>
             <dd><input type='button' onclick='Settings.clearAllSettings()' style='display:inline' value='Reset All Settings'></input></dd>
+            <dd></br></dd>
         </dl>
         <div id='debugger' style='border: 1px solid black; width: 80%; padding: 10px'></div>
       </ul>
     </div>
 
     <div id='settings-button' class='settings-button'>
-      <image class='settings-button-image' onclick='Settings.toggleSettingsVisibility()' src='./images/settings-gear.png'>
+      <image id='settings-button-image' class='settings-button-image' onclick='Settings.toggleSettingsVisibility()' src='./images/settings-gear.png'>
     </div>
 
     <!-- GLOBALS -->
     <script type='text/javascript' src='./javascript/globals/globals.js'></script>
     <script type='text/javascript' src='./javascript/Debugger/Debugger.js'></script>
+    <script type='text/javascript' src='./javascript/UserMonitor/UserMonitor.js'></script>
+
     <!-- CLASSES -->
     <script type='text/javascript' src='./javascript/LocalStorageManager/LocalStorageManager.js'></script>
     <script type='text/javascript' src='./javascript/HTML5FileAPIManager/HTML5FileAPIManager.js'></script>
@@ -53,6 +66,7 @@
     <script type='text/javascript' src='./javascript/IndexedDBManager/IndexedDBManager.js'></script>
     <script type='text/javascript' src='./javascript/ImageHandler/ImageHandler.js'></script>
     <script type='text/javascript' src='./javascript/Settings/Settings.js'></script>
+    <script type='text/javascript' src='./javascript/SettingsButton/SettingsButton.js'></script>
     <script type='text/javascript' src='./javascript/OnLoad/OnLoad.js'></script>
     <!-- MAIN EXECUTION THREAD -->
     <script type='text/javascript' src='./javascript/index.js'></script>

@@ -4,18 +4,18 @@
     },
     'extends': 'eslint:recommended',
     'globals': {
-      'Promise': 'true',
-
-      'LOCALSTORAGEOBJECT': 'true',
-
       'Debugger': 'true',
       'HTML5FileAPIManager': 'true',
-      'IndexedDBManager': 'true',
-      'LocalStorageManager': 'true',
-      'IndexedDBP': 'true',
       'ImageHandler': 'true',
+      'IndexedDBManager': 'true',
+      'IndexedDBP': 'true',
+      'LocalStorageManager': 'true',
+      'LOCALSTORAGEOBJECT': 'true',
+      'OnLoad': 'true',
+      'Promise': 'true',
       'Settings': 'true',
-      'OnLoad': 'true'
+      'SettingsButton': 'true',
+      'UserMonitor': 'true'
     },
     'parserOptions': {
       'ecmaVersion': 9,

@@ -9,6 +9,8 @@ class OnLoad {
       .checked = LOCALSTORAGEOBJECT.get().randomBackgrounds
     document.getElementById('hideSettingsButton')
       .checked = LOCALSTORAGEOBJECT.get().hideSettingsButton
+    document.getElementById('stopSettingsButtonAnimation')
+      .checked = LOCALSTORAGEOBJECT.get().stopSettingsButtonAnimation
     document.getElementById('showSearchBar')
       .checked = LOCALSTORAGEOBJECT.get().showSearchBar
     document.getElementById('enableDebugger')

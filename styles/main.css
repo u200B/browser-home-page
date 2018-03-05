@@ -19,9 +19,8 @@
 
 .settings-button {
   bottom: 0;
-  opacity: .5;
+  left: 0;
   position: absolute;
-  right: 0;
 }
 
 .settings-button:hover {
