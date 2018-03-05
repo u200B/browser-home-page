@@ -21,30 +21,26 @@
       <ul style='max-height: 300px; overflow-x: hidden; overflow-y: scroll;'>
         <dl>
           <dt id='backgroundImageUploaderTitle'>Upload Background Image</dt>
-            <dd><input id='fileLoader' type='file' onchange='ImageHandler.upload(this.files[0])' onclick='this.value = null' style='display:inline'></input></dd>
-          <!-- Background Image List Structure -->
-          <!-- <dt id='currentBackgroundImagesSection'>Current Background Images</dt>
-            <dd>
-              <div style='vertical-align: middle; float: left'>image name</div>
-              <image src='./images/favicon.png' style='height: 50px'>
-              <input id='selectBackground' type='button' value='Set As Background'>
-              <input id='deleteImage' type='button' value='Delete Image'><br>
-            </dd> -->
+            <dd><input id='fileLoader' type='file' onchange='Settings.upload(this.files[0])' onclick='this.value = null' style='display:inline'></input></dd>
+          <dt id='currentBackgroundImagesSection'>
+            Current Background Images
+            <dd><input id='loadCurrentBackgroundImagesSection' type="button" onclick='Settings.loadCurrentBackgroundImagesSection("hideSettingsButton", this.checked)' value='Load'><br></dd>
+          </dt>
           <dt>Options</dt>
-            <dd><input id='hideSettingsButton' type="checkbox" onclick='SettingsHandler.updateSettings("hideSettingsButton", this.checked); location.reload()'>Hide Settings Button (Always Available At Bottom Right-Hand Side Of Browser)<br></dd>
-            <dd><input id='showSearchBar' type="checkbox" onclick='SettingsHandler.updateSettings("showSearchBar", this.checked); location.reload()'>Search Bar<br></dd>
+            <dd><input id='hideSettingsButton' type="checkbox" onclick='Settings.updateSettings("hideSettingsButton", this.checked)'>Hide Settings Button (Always Available At Bottom Right-Hand Side Of Browser)<br></dd>
+            <dd><input id='showSearchBar' type="checkbox" onclick='Settings.updateSettings("showSearchBar", this.checked)'>Search Bar<br></dd>
 
-            <dd><input id='randomBackgrounds' type='checkbox' onclick='SettingsHandler.updateSettings("randomBackgrounds", this.checked)'>Randomly Select Uploaded Images As Background<br></dd>
-            <dd><input id='enableDebugger' type='checkbox' onclick='SettingsHandler.updateSettings("enableDebugger", this.checked); location.reload()'>Enable Debugger<br></dd>
-            <dd><input type='button' onclick='ImageHandler.clearAllImages()' style='display:inline' value='Clear All Background Images'></input></dd>
-            <dd><input type='button' onclick=' LOCALSTORAGEOBJECT.destroy(); ImageHandler.clearAllImages()' style='display:inline' value='Reset All Settings'></input></dd>
+            <dd><input id='randomBackgrounds' type='checkbox' onclick='Settings.updateSettings("randomBackgrounds", this.checked)'>Randomly Select Uploaded Images As Background<br></dd>
+            <dd><input id='enableDebugger' type='checkbox' onclick='Settings.updateSettings("enableDebugger", this.checked)'>Enable Debugger<br></dd>
+            <dd><input type='button' onclick='Settings.clearAllImages()' style='display:inline' value='Clear All Background Images'></input></dd>
+            <dd><input type='button' onclick='Settings.clearAllSettings()' style='display:inline' value='Reset All Settings'></input></dd>
         </dl>
         <div id='debugger' style='border: 1px solid black; width: 80%; padding: 10px'></div>
       </ul>
     </div>
 
     <div id='settings-button' class='settings-button'>
-      <image class='settings-button-image' onclick='SettingsHandler.toggleSettingsVisibility()' src='./images/settings-gear.png'>
+      <image class='settings-button-image' onclick='Settings.toggleSettingsVisibility()' src='./images/settings-gear.png'>
     </div>
 
     <!-- GLOBALS -->
@@ -56,7 +52,7 @@
     <script type='text/javascript' src='./javascript/IndexedDBP/IndexedDBP.js'></script>
     <script type='text/javascript' src='./javascript/IndexedDBManager/IndexedDBManager.js'></script>
     <script type='text/javascript' src='./javascript/ImageHandler/ImageHandler.js'></script>
-    <script type='text/javascript' src='./javascript/SettingsHandler/SettingsHandler.js'></script>
+    <script type='text/javascript' src='./javascript/Settings/Settings.js'></script>
     <script type='text/javascript' src='./javascript/OnLoad/OnLoad.js'></script>
     <!-- MAIN EXECUTION THREAD -->
     <script type='text/javascript' src='./javascript/index.js'></script>

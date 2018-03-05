@@ -15,12 +15,20 @@ class OnLoad {
       .checked = LOCALSTORAGEOBJECT.get().enableDebugger
   }
 
-  static loadLastSetImage() {
-    IndexedDBManager.getAllImages()
-      .then(event => {
-        if (event.target.result.length) {
+  static loadLastSetImage(imageKey) {
+    IndexedDBManager.getAllImagesWithKeys()
+      .then(images => {
+        let imageIndex = images.length - 1
+        if (images.length) {
+          if (imageKey) {
+            images.forEach((image, index) => {
+              if (imageKey === image.key) {
+                imageIndex = index
+              }
+            })
+          }
           return HTML5FileAPIManager.convertFileToDataUrl(
-            event.target.result[event.target.result.length - 1]
+            images[imageIndex].value
           )
         } else {
           Promise.resolve(false)

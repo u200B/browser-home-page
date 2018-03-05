@@ -35,4 +35,15 @@ class ImageHandler {
         throw new Error(error)
       })
   }
+
+  static clearImageByKey(key) {
+    IndexedDBManager.clearImageByKey(key)
+      .then(() => {
+        location.reload()
+      })
+      .catch(error => {
+        location.reload()
+        throw new Error(error)
+      })
+  }
 }

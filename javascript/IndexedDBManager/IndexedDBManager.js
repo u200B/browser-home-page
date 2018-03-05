@@ -62,14 +62,53 @@ class IndexedDBManager {
     })
   }
 
-  static getAllImages() {
+  static getAllImagesWithKeys() {
+    this._loadDatabase()
+    return new Promise((resolve, reject) => {
+      let imageArrayWithKeys = []
+      this.dbp.open()
+        .then(() => {
+          return new Promise((resolve, reject) => {
+            this.dbp.cursor(this.dbp.db
+              .transaction('images', 'readonly')
+              .objectStore('images').openCursor(),
+
+            (event) => {
+              if (event && event.target && event.target.result) {
+                imageArrayWithKeys.push({
+                  key: event.target.result.key,
+                  value: event.target.result.value
+                })
+                event.target.result.continue()
+              } else {
+                resolve(imageArrayWithKeys)
+              }
+            },
+
+            (event) => {
+              reject(event)
+            }
+            )
+          })
+        })
+        .then(event => {
+          this.dbp.close()
+          resolve(event)
+        })
+        .catch(error => {
+          reject(error)
+        })
+    })
+  }
+
+  static clearImageByKey(key) {
     this._loadDatabase()
     return new Promise((resolve, reject) => {
       this.dbp.open()
         .then(() => {
           return this.dbp.transaction(this.dbp.db
-            .transaction('images', 'readonly')
-            .objectStore('images').getAll())
+            .transaction('images', 'readwrite')
+            .objectStore('images').delete(key))
         })
         .then(event => {
           this.dbp.close()

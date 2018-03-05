@@ -14,7 +14,7 @@
       'LocalStorageManager': 'true',
       'IndexedDBP': 'true',
       'ImageHandler': 'true',
-      'SettingsHandler': 'true',
+      'Settings': 'true',
       'OnLoad': 'true'
     },
     'parserOptions': {

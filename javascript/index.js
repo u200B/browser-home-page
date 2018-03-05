@@ -1,4 +1,4 @@
-/* Load Debugger */
+/*** Load Debugger ***/
 new Debugger()
 
 /*** Setup Document With LocalStorage Configurations ***/
@@ -10,10 +10,14 @@ if (LOCALSTORAGEOBJECT.get().fallbackImage) {
   document.getElementById('fileLoader').disabled = true
   document.getElementById('backgroundImageUploaderTitle')
     .innerHTML += ` (Multiple Images Not Supported For Your Browser,
-                     Reset All Settings To Try Again)`
+                     Reset All Settings To Try Again, Subsequent Settings Will
+                     Likely Fail On Your Browser...
+                    )`
 } else {
   LOCALSTORAGEOBJECT.get().randomBackgrounds ?
-    OnLoad.loadRandomImage() : OnLoad.loadLastSetImage()
+    OnLoad.loadRandomImage() : OnLoad.loadLastSetImage(
+      LOCALSTORAGEOBJECT.get().backgroundImageKey
+    )
 }
 
 document.getElementById('settings-button')

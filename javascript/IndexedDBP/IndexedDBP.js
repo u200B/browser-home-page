@@ -77,6 +77,16 @@ class IndexedDBP {
     })
   }
 
+  // Promisify iteration over all cursors w/ cursor.continue()
+  cursor(cursor, success, failure) {
+    cursor.onsuccess = (event) => {
+      success(event)
+    }
+    cursor.onerror = (event) => {
+      failure(event)
+    }
+  }
+
   close() {
     this.db.close()
   }
